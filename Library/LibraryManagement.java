@@ -10,6 +10,9 @@ public class LibraryManagement {
     private void run() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
+        
+    //use the singleton instance of transaction
+        Transaction transaction = Transaction.getTransaction();
 
         while (running) {
             System.out.println("===========================");
