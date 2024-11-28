@@ -129,5 +129,10 @@ public class LibraryManagement {
                     System.out.println("Invalid choice! Please try again.");
             }
         }
+            // Ensure scanner is closed
+            if (scanner != null) {
+                scanner.close();
+                System.out.println("Scanner closed successfully.");
+            }
     }
 }
