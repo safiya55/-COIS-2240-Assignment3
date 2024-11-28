@@ -5,14 +5,26 @@ public class Library {
     private List<Member> members = new ArrayList<Member>();
     private List<Book> books = new ArrayList<Book>();
 
-    // Add a new member to the library
-    public void addMember(Member member) {
-        members.add(member);
+    // Add a new member to the library(modified)
+    public boolean addMember(Member member) {
+       // members.add(member);
+    	if(findMemberById(member.getId()) != null) {
+    		System.out.println("Error: Member ID already exists");
+    		return false;
+    	}
+    	members.add(member);
+    	return true;
     }
     
     // Add a new book to the library
-    public void addBook(Book book) {
-        books.add(book);
+    public boolean addBook(Book book) {
+        //books.add(book);
+    	if(findBookById(book.getId()) != null) {
+    		System.out.println("Error: Book ID already exists");
+    		return false;
+    	}
+    	books.add(book);
+    	return true;
     }
 
     // Find a member by ID
