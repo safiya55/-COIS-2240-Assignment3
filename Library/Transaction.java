@@ -62,7 +62,7 @@ public class Transaction {
 //		}
     	FileWriter writer = null;
     	try {
-    		String fileName = "tranaction.txt";
+    		String fileName = "transaction.txt";
     		
     		writer = new FileWriter(fileName, true);
     		writer.write(transactionDetails + System.lineSeparator());
