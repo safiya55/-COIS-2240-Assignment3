@@ -1,6 +1,8 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
 
 public class LibraryManagementTest {
 	private Transaction transaction;
@@ -62,6 +64,26 @@ public class LibraryManagementTest {
 		assertFalse("Returning should fail if book has already been returned", returnAgain);
 		
 
+	}
+	
+	@Test
+	public void testSingletonTransaction() throws Exception{
+		Constructor<Transaction> constructor = Transaction.class.getConstructor();
+		
+		//check if constructor is private
+		int modifiers = constructor.getModifiers();
+		assertTrue("Transaction cronstructor is private", Modifier.isPrivate(modifiers));
+		
+		//try to set the constructor accessible(should not work)
+		constructor.setAccessible(true);
+		
+		//try to create a new instance
+		try {
+			constructor.newInstance();
+			fail("Singleton design does not allow for new instance to be created");
+		}catch(Exception e) {
+			assertTrue("Expected exception when instantiating singleton", true);
+		}
 	}
 }
 
