@@ -3,7 +3,10 @@ public class Book {
     private String title;
     private boolean available;
 
-    public Book(int id, String title) {
+    public Book(int id, String title) throws Exception{
+    	if(!isValidId(id)) {
+    		System.out.println("Book id" + "is not valid. Must be between 100 and 999");
+    	}
         this.id = id;
         this.title = title;
         this.available = true;

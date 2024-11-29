@@ -53,13 +53,17 @@ public class LibraryManagement {
                     String title = scanner.next();
                     
                     scanner.nextLine();
-
+                    
+                    try {
                     Book newBook = new Book(id, title);
                     if(library.addBook(newBook)) {
                     System.out.println("Book added to library successfully.");
                     }else {
                     	System.out.println("Failed to add book.There's already a book with this ID");
 
+                    }
+                    }catch(Exception e) {
+                    	System.out.println("Error: " +e.getLocalizedMessage());
                     }
                     break;
                 case 3:
